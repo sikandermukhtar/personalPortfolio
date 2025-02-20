@@ -9,7 +9,7 @@ export default function Introduction(){
                 <h2
                     className="lg:text-7xl md:text-6xl text-4xl text-center text-white font-spaceGrotesk font-bold leading-relaxed uppercase"
                 >
-                    Don't be afraid to give up the good to go for the great
+                    Don&apos;t be afraid to give up the good to go for the great
                 </h2>
                 <h3 className="text-white lg:self-end text-xl mt-2 lg:mr-16">~ John D. Rockefeller</h3>
             </div>
