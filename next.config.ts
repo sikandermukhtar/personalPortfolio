@@ -1,7 +1,19 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    remotePatterns: [
+      // SANITY CMS PAUSED: restore this remote pattern if Sanity-hosted images return.
+      // {
+      //   protocol: 'https',
+      //   hostname: 'cdn.sanity.io',
+      // },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+    ],
+  },
 };
 
 export default nextConfig;

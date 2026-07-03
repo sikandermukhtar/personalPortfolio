@@ -1,3 +1,124 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-serif), ui-serif, Georgia, serif;
+  --font-urdu: "Jameel Noori Nastaleeq", "Noto Nastaliq Urdu", "Noto Naskh Arabic", "Urdu Typesetting", "Nafees Nastaleeq", "Segoe UI", Tahoma, sans-serif;
+}
+
+body {
+  font-family: var(--font-sans), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+[lang="ur"] {
+  font-family: var(--font-urdu);
+  line-height: 1.85;
+}
+
+[lang="ur"] .font-sans,
+[lang="ur"] .font-serif,
+[lang="ur"] .font-mono {
+  font-family: var(--font-urdu);
+}
+
+[lang="ur"] h1,
+[lang="ur"] h2,
+[lang="ur"] h3,
+[lang="ur"] h4 {
+  line-height: 1.65;
+}
+
+[lang="ur"] p,
+[lang="ur"] li,
+[lang="ur"] input,
+[lang="ur"] textarea,
+[lang="ur"] button {
+  line-height: 1.9;
+}
+
+@keyframes infinite-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-infinite-scroll {
+  animation: infinite-scroll 20s linear infinite;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .glass-card {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.github-tooltip {
+  position: fixed;
+  background: white;
+  border: 1px solid rgb(208 215 222);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 9999;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+}
+
+.dark .github-tooltip {
+  background: black;
+  border-color: rgb(48 54 61);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.github-graph-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.github-scroll-container {
+  width: 100%;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.github-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.github-contribution-grid {
+  --github-cell-gap: 2px;
+  display: grid;
+  grid-template-columns: repeat(53, minmax(0, 1fr));
+  width: 640px;
+  flex: 0 0 640px;
+  gap: var(--github-cell-gap);
+}
+
+.github-contribution-week {
+  gap: var(--github-cell-gap);
+}
+
+.github-contribution-day {
+  aspect-ratio: 1;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .github-contribution-grid {
+    width: 100%;
+    flex: 0 1 100%;
+  }
+}

@@ -1,0 +1,57 @@
+---
+title: "GradeWave"
+slug: "gradewave"
+description: "An AI-assisted grading and feedback platform built with FastAPI, React, Expo React Native, Celery, Redis, and retrieval-augmented generation workflows."
+githubUrl: "https://github.com/sikandermukhtar/gradewave-final"
+imageUrl: "/projects/gradewave-1.png"
+technologies:
+  - "FastAPI"
+  - "React"
+  - "Expo React Native"
+  - "Celery"
+  - "Redis"
+  - "RAG"
+detailSections:
+  - title: "Core Systems"
+    items:
+      - "FastAPI backend for application APIs and AI workflow orchestration"
+      - "React web interface for managing grading workflows and project data"
+      - "Expo React Native mobile experience for accessing the platform across devices"
+      - "Celery workers for long-running background jobs and asynchronous processing"
+      - "Redis used as infrastructure for caching, queues, or broker-backed task execution"
+      - "Retrieval-augmented generation pipeline for grounding AI feedback in contextual material"
+  - title: "Engineering Challenges"
+    items:
+      - "Designing an asynchronous workflow that can handle AI-heavy tasks without blocking the user interface"
+      - "Coordinating state between the API server, worker queue, Redis, and frontend clients"
+      - "Structuring RAG inputs so generated feedback can stay relevant, contextual, and useful"
+      - "Creating a shared user experience across web and mobile surfaces"
+      - "Handwritten text recognition is difficult for Urdu coursework because most submissions are handwritten and full-page layouts vary across writers."
+  - title: "Urdu Handwritten Text Recognition"
+    items:
+      - "Developed an evaluation benchmark for full-page handwritten Urdu text, consisting of 70 images produced by 7 unique writers."
+      - "Performed comparative analysis on Gemini-3.1-flash-lite-preview, Qwen3.6-Plus, Chandra-OCR-2, Gemma-3-4B-IT, GPT-4o, GPT-5-mini."
+      - "Used Character Error Rate (CER), Word Error Rate (WER), Precision, Recall and F1 as evaluation metrics."
+      - "Gemini-3.1-flash-lite-preview didn't fail on any row during evaluation. The model achieved a mean CER of 0.0146 and a mean WER of 0.0474, this shows strong transcription quality at both the character and word levels."
+      
+    imageUrl: "/projects/gradewave-2.png"
+---
+
+## Overview
+
+GradeWave is an AI-assisted grading and feedback platform designed around a modern full-stack architecture. The project combines a FastAPI backend, React web interface, Expo React Native mobile app, and background processing infrastructure for AI-heavy workflows.
+
+The system is built to support grading and feedback tasks that may take longer than a normal request/response cycle. Instead of forcing everything through the frontend, the platform uses worker-based processing so AI tasks, retrieval steps, and feedback generation can run asynchronously.
+
+## Technologies
+
+- **FastAPI** for the backend layer.
+- **React** for the web user interface.
+- **Expo React Native** for the mobile application. 
+- **Celery** to run background jobs for longer-running tasks.
+- **Redis** to support queueing for the backgorund jobs.
+- **LangChain** to build the RAG systems and the LLM workflows. 
+
+## Why It Matters
+
+Grading systems are not just CRUD applications. They need to manage files, context, rubric-like instructions, feedback quality, and asynchronous AI processing. GradeWave explores that intersection: a practical product surface backed by distributed task execution and retrieval-augmented AI workflows.
