@@ -17,7 +17,7 @@ export default async function Home() {
   return (
     <main className="min-h-screen bg-white dark:bg-black text-black dark:text-white selection:bg-black dark:selection:bg-white selection:text-white dark:selection:text-black">
       <ScrollAnimation delay={0} animation="fade-up">
-        <section className="mb-24 flex flex-col justify-center mt-2">
+        <section className="mb-12 flex flex-col justify-center mt-2">
           <div className="max-w-xl">
             <p className="mb-4 font-mono text-sm text-gray-500 dark:text-gray-400 md:text-base">
               Full-Stack &amp; Machine Learning Engineer
@@ -33,22 +33,22 @@ export default async function Home() {
       </ScrollAnimation>
 
       <ScrollAnimation delay={0.1} animation="fade-up">
-        <section className="mb-16 pt-8 pb-12">
+        <section className="mb-12 pt-0 pb-6">
           <h2 className="font-serif text-2xl md:text-3xl mb-8 tracking-tight">GitHub Contributions</h2>
           <GithubGraph />
         </section>
       </ScrollAnimation>
 
       <ScrollAnimation delay={0.1} animation="fade-up">
-        <section className="mb-10 py-6">
-          <h2 className="font-serif text-2xl md:text-3xl mb-6 tracking-tight">Tech Stack</h2>
+        <section className="mb-12 pt-0 pb-6">
+          <h2 className="font-serif text-2xl md:text-3xl mb-8 tracking-tight">Tech Stack</h2>
           <TechStack />
         </section>
       </ScrollAnimation>
 
       <ScrollAnimation delay={0.1} animation="fade-up">
-        <section id="experience" className="mb-16 py-12">
-          <h2 className="font-serif text-2xl md:text-3xl mb-12 tracking-tight">Experience</h2>
+        <section id="experience" className="mb-12 pt-0 pb-6">
+          <h2 className="font-serif text-2xl md:text-3xl mb-8 tracking-tight">Experience</h2>
           <div className="space-y-12">
             <ExperienceItem
               title="Digimark Developers"
@@ -115,8 +115,8 @@ export default async function Home() {
       </ScrollAnimation>
 
       <ScrollAnimation delay={0.1} animation="fade-up">
-        <section id="projects" className="mb-10 py-8">
-          <h2 className="font-serif text-2xl md:text-3xl mb-6 tracking-tight">Projects</h2>
+        <section id="projects" className="mb-12 pt-0 pb-6">
+          <h2 className="font-serif text-2xl md:text-3xl mb-8 tracking-tight">Projects</h2>
           <ProjectsList projects={projects} />
         </section>
       </ScrollAnimation>
@@ -125,14 +125,17 @@ export default async function Home() {
         <section id="resume" className="py-14 border-t border-gray-200 dark:border-gray-800">
           <div className="flex flex-col items-start gap-5">
             <h2 className="font-serif text-2xl md:text-3xl tracking-tight">Resume</h2>
-            <a
-              href="/resume.pdf"
+            <HoverBorderGradient
+              as="a"
+              href="/sikander_mukhtar.pdf"
               download
-              className="inline-flex min-h-10 items-center justify-center gap-2 border-b border-black pb-0.5 font-mono text-sm text-black transition-colors hover:text-gray-500 active:scale-[0.96] dark:border-white dark:text-white dark:hover:text-gray-400"
+              containerClassName="rounded-full"
+              className="inline-flex min-h-10 items-center justify-center gap-2 px-4 py-2 text-sm font-medium"
+              duration={1.5}
             >
               <Download className="h-4 w-4" aria-hidden="true" />
-              Download Resume
-            </a>
+              <span>Download Resume</span>
+            </HoverBorderGradient>
           </div>
         </section>
       </ScrollAnimation>

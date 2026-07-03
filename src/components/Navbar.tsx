@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { ThemeToggle } from './ThemeToggle'
-import { buildSectionPath, getSectionFromPathname, type SectionSlug } from '@/lib/site-routing'
+import { buildSectionPath, getSectionFromPathname, isDetailPath, type SectionSlug } from '@/lib/site-routing'
 
 export function Navbar() {
   const pathname = usePathname()
@@ -13,7 +13,7 @@ export function Navbar() {
     e.preventDefault()
 
     const currentSection = getSectionFromPathname(pathname)
-    const isHomeShell = pathname === '/' || currentSection !== null
+    const isHomeShell = pathname === '/' || (currentSection !== null && !isDetailPath(pathname, 'projects'))
 
     if (!isHomeShell) {
       router.push(urlPath)
