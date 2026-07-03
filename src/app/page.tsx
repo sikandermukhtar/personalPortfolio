@@ -8,6 +8,7 @@ import { ContactForm } from '@/components/ContactForm'
 import { SiteFooter } from '@/components/SiteFooter'
 import { ScrollAnimation } from '@/components/ScrollAnimation'
 import { Download } from 'lucide-react'
+import { HoverBorderGradient } from '@/components/ui/hover-border-gradient'
 
 export default async function Home() {
   const profile = FALLBACK_PROFILE
@@ -50,17 +51,64 @@ export default async function Home() {
           <h2 className="font-serif text-2xl md:text-3xl mb-12 tracking-tight">Experience</h2>
           <div className="space-y-12">
             <ExperienceItem
-              title="Company Name"
-              role="Role - Location"
+              title="Digimark Developers"
+              role="AI/ML Engineer — Lahore, Pakistan (Jul 2025 – Apr 2026)"
               collapsible={true}
-              link="https://example.com"
             >
-              <p>Description of your role and achievements. Add more details here that will be collapsible.</p>
-              <ul className="list-disc list-inside space-y-1 mt-2">
-                <li>Achievement 1</li>
-                <li>Achievement 2</li>
-                <li>Achievement 3</li>
-              </ul>
+              <p className="text-gray-600 dark:text-gray-400 mb-4">
+                Started as an AI/ML Intern and transitioned into an Associate AI/ML Engineer role, focusing on retrieval-augmented generation (RAG) pipelines, workflow automation, FastAPI backend development, and predictive modeling.
+              </p>
+              
+              <dl className="space-y-6">
+                <div>
+                  <dt className="font-semibold text-black dark:text-white text-sm mb-1">
+                    Associate AI/ML Engineer <span className="text-xs text-gray-400 dark:text-gray-500 font-mono font-normal ml-1">(Dec 2025 – Apr 2026)</span>
+                  </dt>
+                  <dd className="text-gray-500 dark:text-gray-400 text-sm pl-4 border-l border-gray-200 dark:border-gray-800">
+                    <ul className="list-disc space-y-2 pl-4">
+                      <li>
+                        Architected Retrieval-Augmented Generation (RAG) pipelines and integrated observability frameworks to monitor LLM performance, track token usage, and reduce response latency.
+                      </li>
+                      <li>
+                        Designed and deployed N8N automation workflows and voice agents using VAPI, connecting third-party APIs to streamline business processes, automate customer calls, and eliminate operational bottlenecks.
+                      </li>
+                      <li>
+                        Implemented Twilio and VAPI SDKs with FastAPI for integrated communication solutions.
+                      </li>
+                    </ul>
+                  </dd>
+                </div>
+
+                <div>
+                  <dt className="font-semibold text-black dark:text-white text-sm mb-1">
+                    AI/ML Intern <span className="text-xs text-gray-400 dark:text-gray-500 font-mono font-normal ml-1">(Jul 2025 – Dec 2025)</span>
+                  </dt>
+                  <dd className="text-gray-500 dark:text-gray-400 text-sm pl-4 border-l border-gray-200 dark:border-gray-800">
+                    <ul className="list-disc space-y-2 pl-4">
+                      <li>
+                        Collaborated with clients to engineer effective workflows, ensuring alignment with project goals.
+                      </li>
+                      <li>
+                        Trained and evaluated classification models for sentiment analysis and computer vision tasks, enhancing predictive accuracy.
+                      </li>
+                    </ul>
+                  </dd>
+                </div>
+              </dl>
+
+              <div className="mt-6 flex flex-wrap gap-2">
+                {["FastAPI", "RAG", "N8N", "LangChain", "LangSmith", "VAPI", "Twilio", "Machine Learning", "Deep Learning", "Agentic AI"].map((tech) => (
+                  <HoverBorderGradient
+                    key={tech}
+                    as="span"
+                    containerClassName="rounded-full"
+                    className="px-2 py-0.5 text-[10px] font-mono"
+                    duration={1.5}
+                  >
+                    {tech}
+                  </HoverBorderGradient>
+                ))}
+              </div>
             </ExperienceItem>
           </div>
         </section>

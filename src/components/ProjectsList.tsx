@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import type { Project } from "@/lib/projects";
+import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 
 interface ProjectsListProps {
   projects: Project[];
@@ -39,14 +40,17 @@ export function ProjectsList({ projects }: ProjectsListProps) {
               </p>
             </div>
             {project.technologies && (
-              <div className="mt-2 flex flex-wrap gap-1.5">
+              <div className="mt-2.5 flex flex-wrap gap-1.5">
                 {project.technologies.map((tech: string) => (
-                  <span
+                  <HoverBorderGradient
                     key={tech}
-                    className="text-xs border border-gray-200 dark:border-gray-700 rounded-full px-2.5 py-0.5 text-gray-600 dark:text-gray-400"
+                    as="span"
+                    containerClassName="rounded-full"
+                    className="px-2 py-0.5 text-[10px] font-mono"
+                    duration={1.5}
                   >
                     {tech}
-                  </span>
+                  </HoverBorderGradient>
                 ))}
               </div>
             )}

@@ -25,6 +25,7 @@ export interface ContentFrontmatter {
   excerpt?: string
   description?: string
   imageUrl?: string
+  order?: number
   draft?: boolean
   layout?: ContentLayout
   component?: string

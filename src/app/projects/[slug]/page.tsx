@@ -75,7 +75,7 @@ export default async function ProjectDetail({ params }: PageProps) {
           {project.technologies && project.technologies.length > 0 && (
             <div className="mb-8 flex flex-wrap gap-2 border-b border-gray-200 pb-6 dark:border-gray-800">
               {project.technologies.map((tech: string) => (
-                <span key={tech} className="rounded-full bg-gray-100 px-2.5 py-1 text-xs text-gray-700 dark:bg-gray-900 dark:text-gray-300">
+                <span key={tech} className="rounded-full bg-gray-100 px-2.5 py-0.5 text-[10px] text-gray-700 dark:bg-gray-900 dark:text-gray-300">
                   {tech}
                 </span>
               ))}

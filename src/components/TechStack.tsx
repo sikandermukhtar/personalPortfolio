@@ -7,11 +7,10 @@ const categories = [
   {
     key: "languages",
     skills: [
-      { name: "Go", slug: "go", color: "#00ADD8" },
       { name: "Python", slug: "python", color: "#3776AB" },
+      { name: "Go", slug: "go", color: "#00ADD8" },
       { name: "TypeScript", slug: "typescript", color: "#3178C6" },
       { name: "JavaScript", slug: "javascript", color: "#F7DF1E" },
-      { name: "C++", slug: "cplusplus", color: "#00599C" },
     ]
   },
   {
@@ -20,39 +19,41 @@ const categories = [
       { name: "React", slug: "react", color: "#61DAFB" },
       { name: "Next.js", slug: "nextdotjs", color: "#fff" },
       { name: "Tailwind CSS", slug: "tailwindcss", color: "#06B6D4" },
-      { name: "Shadcn UI", slug: "shadcnui", color: "#fff" },
-      { name: "Framer Motion", slug: "framer", color: "#0055FF" },
     ]
   },
   {
     key: "backend",
     skills: [
       { name: "FastAPI", slug: "fastapi", color: "#009688" },
-      { name: "Node.js", slug: "nodedotjs", color: "#339933" },
       { name: "PostgreSQL", slug: "postgresql", color: "#4169E1" },
       { name: "MongoDB", slug: "mongodb", color: "#47A248" },
       { name: "Redis", slug: "redis", color: "#DC382D" },
-      { name: "FireBase", slug: "firebase", color: "#DD2C00" },
+      { name: "Vector Databases", slug: "qdrant", color: "#00F0FF" },
     ]
   },
   {
     key: "infra",
     skills: [
       { name: "Docker", slug: "docker", color: "#2496ED" },
-      { name: "Google Cloud", slug: "googlecloud", color: "#4285F4" },
       { name: "Vercel", slug: "vercel", color: "#fff" },
       { name: "Git", slug: "git", color: "#F05032" },
       { name: "GitHub", slug: "github", color: "#fff" },
-      { name: "Linux", slug: "linux", color: "#FCC624" },
-      { name: "Nginx", slug: "nginx", color: "#009639" },
     ]
   },
   {
     key: "ai",
     skills: [
+      { name: "LangChain", slug: "langchain", color: "#fff" },
+      { name: "CrewAI", slug: "crewai", color: "#fff" },
       { name: "Hugging Face", slug: "huggingface", color: "#FFD21E" },
       { name: "PyTorch", slug: "pytorch", color: "#EE4C2C" },
       { name: "Pandas", slug: "pandas", color: "#150458" },
+    ]
+  },
+  {
+    key: "protocol",
+    skills: [
+      { name: "Model Context Protocol", slug: "modelcontextprotocol", color: "#fff" },
     ]
   }
 ];
@@ -65,6 +66,7 @@ const categoryNames: Record<string, string> = {
   backend: "Backend & DB",
   infra: "Infra & Tools",
   ai: "AI & ML",
+  protocol: "Protocol",
 };
 
 export function TechStack() {
@@ -116,11 +118,15 @@ export function TechStack() {
                     <div className="flex gap-12 py-4 pe-12">
                       {marqueeSkills.map((tech, index) => (
                         <div key={index} className="flex flex-col items-center justify-center gap-2">
-                          <div className="h-10 w-10 transition-all duration-300">
+                          <div className="h-7 w-7 transition-all duration-300">
                             <img
                               src={`https://cdn.simpleicons.org/${tech.slug}`}
                               alt={tech.name}
-                              className="h-full w-full object-contain opacity-80 hover:opacity-100 transition-all duration-300 brightness-0 hover:brightness-100 dark:brightness-0 dark:invert dark:hover:invert-0 dark:hover:brightness-100"
+                              className={
+                                tech.color === "#fff"
+                                  ? "h-full w-full object-contain opacity-80 hover:opacity-100 transition-all duration-300 brightness-0 dark:brightness-0 dark:invert"
+                                  : "h-full w-full object-contain opacity-80 hover:opacity-100 transition-all duration-300 brightness-0 hover:brightness-100 dark:brightness-0 dark:invert dark:hover:invert-0 dark:hover:brightness-100"
+                              }
                               loading="lazy"
                             />
                           </div>
@@ -130,11 +136,15 @@ export function TechStack() {
                     <div className="flex gap-12 py-4 pe-12">
                       {marqueeSkills.map((tech, index) => (
                         <div key={index + marqueeSkills.length} className="flex flex-col items-center justify-center gap-2">
-                          <div className="h-10 w-10 transition-all duration-300">
+                          <div className="h-7 w-7 transition-all duration-300">
                             <img
                               src={`https://cdn.simpleicons.org/${tech.slug}`}
                               alt={tech.name}
-                              className="h-full w-full object-contain opacity-80 hover:opacity-100 transition-all duration-300 brightness-0 hover:brightness-100 dark:brightness-0 dark:invert dark:hover:invert-0 dark:hover:brightness-100"
+                              className={
+                                tech.color === "#fff"
+                                  ? "h-full w-full object-contain opacity-80 hover:opacity-100 transition-all duration-300 brightness-0 dark:brightness-0 dark:invert"
+                                  : "h-full w-full object-contain opacity-80 hover:opacity-100 transition-all duration-300 brightness-0 hover:brightness-100 dark:brightness-0 dark:invert dark:hover:invert-0 dark:hover:brightness-100"
+                              }
                               loading="lazy"
                             />
                           </div>
@@ -164,15 +174,19 @@ export function TechStack() {
                               key={skill.name}
                               className="group flex items-center gap-3 rounded-lg border border-transparent p-2 transition-all hover:border-gray-100 dark:hover:border-zinc-800 hover:bg-gray-50/50 dark:hover:bg-zinc-900/50"
                             >
-                              <div className="h-5 w-5 shrink-0 transition-all duration-300">
+                              <div className="h-4 w-4 shrink-0 transition-all duration-300">
                                 <img
                                   src={`https://cdn.simpleicons.org/${skill.slug}`}
                                   alt={skill.name}
-                                  className="h-full w-full object-contain opacity-50 group-hover:opacity-100 transition-all duration-300 brightness-0 group-hover:brightness-100 dark:brightness-0 dark:invert dark:group-hover:invert-0 dark:group-hover:brightness-100"
+                                  className={
+                                    skill.color === "#fff"
+                                      ? "h-full w-full object-contain opacity-50 group-hover:opacity-100 transition-all duration-300 brightness-0 dark:brightness-0 dark:invert"
+                                      : "h-full w-full object-contain opacity-50 group-hover:opacity-100 transition-all duration-300 brightness-0 group-hover:brightness-100 dark:brightness-0 dark:invert dark:group-hover:invert-0 dark:group-hover:brightness-100"
+                                  }
                                   loading="lazy"
                                 />
                               </div>
-                              <span className="text-sm font-medium text-gray-500 dark:text-gray-400 group-hover:text-black dark:group-hover:text-white transition-colors">
+                              <span className="text-xs font-medium text-gray-500 dark:text-gray-400 group-hover:text-black dark:group-hover:text-white transition-colors">
                                 {skill.name}
                               </span>
                             </div>

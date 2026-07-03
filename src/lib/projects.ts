@@ -52,7 +52,20 @@ function mergeProjectMetadata(
 export async function getProjects(): Promise<Project[]> {
   const localProjects = await getAllLocalContent('projects')
 
-  return localProjects.map((localProject) => {
+  return localProjects
+    .toSorted((a, b) => {
+      const aOrder = a.frontmatter.order ?? Number.MAX_SAFE_INTEGER
+      const bOrder = b.frontmatter.order ?? Number.MAX_SAFE_INTEGER
+
+      if (aOrder !== bOrder) {
+        return aOrder - bOrder
+      }
+
+      return getFrontmatterTitle(a.frontmatter, a.canonicalSlug).localeCompare(
+        getFrontmatterTitle(b.frontmatter, b.canonicalSlug),
+      )
+    })
+    .map((localProject) => {
     return {
       ...mergeProjectMetadata(localProject.canonicalSlug, localProject),
       content: localProject.serialized,
