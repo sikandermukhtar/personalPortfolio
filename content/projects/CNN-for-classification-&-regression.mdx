@@ -1,6 +1,9 @@
 ---
 title: "CNN for Classification & Regression"
+slug: "cnn-for-classification-&-regression"
+order: 4
 description: "A deep learning project exploring how convolutional neural networks can be adapted for both image classification and regression tasks."
+githubUrl: "https://github.com/sikandermukhtar/cnn-for-classification-and-regression"
 technologies:
   - "Python"
   - "Deep Learning"
@@ -22,8 +25,14 @@ detailSections:
 
 ## Overview
 
-This project explores CNNs across two different supervised learning settings: classification and regression. The goal is to understand how the same visual feature extraction backbone can support different prediction heads and evaluation methods.
+Convolutional neural networks are widely used for classification problems, and CNNs perform very well on image classification. In classification, target is discrete value. Although, CNNs can do regression as well, predicting a continuous value.
 
-## Notes
+In this notebook, I am using CNNs to predict age from the face image, which might not be the ideal use case of using CNNs for regression. And for the classification problem, I am doing gender classification.
 
-Add the dataset, architecture details, training curves, and final metrics once you are ready to make this page more specific.
+The dataset UTKFace is large good-quality facial images spanning age across a wide range. Images include significant variations in poses, brightness. In some features, face might not a local structure, but a global feature, for example, portraits, selfies, etc.
+
+Predicting bounding box is a classic, perfect use case for CNN regression. And this project serves as a good basis to prepare for next steps: Object Detection and Localization tasks. There, from an image, CNNs are used to predict continuous values that define a box, and inside that box is our desired object.
+
+## Challenge
+
+Train CNN for regression and classification together is slightly annoying, because to achieve good performance on one problem, you end up overfitting on the other. Here, when I was trying to improve regression results, model started overfitting on the classification task. So you have to be very careful and find a sweetspot. In the regression (age prediction) branch, I am using Global Average Pooling for flattening the feature maps; simple flattening of feature maps can be used, but it will take longer for model to learn to predict correct ages and that will overfit the classification branch. Classification task here is very easy, predicting only 2 labels. The model becomes very good at the classification task very quickly, and longer training (to improve age prediction) can introduce overfitting in the classification branch.

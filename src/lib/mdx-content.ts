@@ -30,7 +30,9 @@ export interface ContentFrontmatter {
   layout?: ContentLayout
   component?: string
   projectUrl?: string
+  projectUrlLabel?: string
   githubUrl?: string
+  githubUrls?: { label: string; url: string }[]
   technologies?: string[]
   features?: string[]
   detailSections?: ContentSection[]

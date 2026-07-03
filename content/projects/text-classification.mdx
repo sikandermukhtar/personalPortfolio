@@ -1,29 +1,122 @@
 ---
 title: "Text Classification"
-description: "An NLP project for classifying text into categories using preprocessing, feature extraction, and supervised learning."
+slug: "text-classification"
+order: 12
+description: "A robust FastAPI-based backend for text classification, featuring sentiment analysis (IMDB) and sincere vs. insincere question detection (Quora)."
+githubUrl: "https://github.com/sikandermukhtar/text-classification"
 technologies:
-  - "Python"
-  - "NLP"
-  - "Text Classification"
+  - "FastAPI"
+  - "PostgreSQL"
   - "Machine Learning"
-  - "Scikit-learn"
+  - "NLP"
+  - "JWT"
 detailSections:
   - title: "Project Scope"
     items:
-      - "Prepared text data through cleaning, tokenization, and feature extraction."
-      - "Trained supervised models to assign labels to text examples."
-      - "Evaluated model performance using classification metrics."
+      - "Designed a robust FastAPI backend supporting ML model inference and authentication."
+      - "Implemented dual text classification models for sentiment (IMDB) and sincere questions (Quora)."
+      - "Structured PostgreSQL data models, migrations with Alembic, and JWT security."
   - title: "What It Demonstrates"
     items:
-      - "Natural language preprocessing fundamentals."
-      - "Understanding of classification metrics such as precision, recall, and F1."
-      - "Applied NLP workflow from raw text to evaluated predictions."
+      - "Full-stack ML API deployment using FastAPI."
+      - "Database schema design, ORM relationships, and migrations."
+      - "Authentication, hashing, and token-based protected endpoints."
 ---
 
 ## Overview
 
-Text Classification is an NLP project focused on assigning categories to text. It covers the practical pipeline of preparing text, training a model, and evaluating predictions.
+A robust FastAPI-based backend for text classification, featuring sentiment analysis (IMDB) and sincere vs. insincere question detection (Quora). Code related to model training and dataset EDA is in `text-classification.ipynb`.
 
-## Notes
+## 🚀 Features
 
-Add the dataset, labels, model comparison, and final metrics when the project is ready for a more detailed write-up.
+- **ML Inference**:
+  - **Quora Insincere Questions**: Detect if a question is sincere or not.
+  - **IMDB Sentiment Analysis**: Classify movie reviews as Positive or Negative.
+- **User Authentication**: JWT-based secure signup and login.
+- **Request Logging**: Runtime performance tracking (response times and statuses).
+- **Database Persistence**: PostgreSQL integration with SQLAlchemy and Alembic migrations.
+- **RESTful API**: Fast and scalable endpoints built with FastAPI.
+
+## 🛠 Tech Stack
+
+- **Framework**: FastAPI
+- **Machine Learning**: `sentence-transformers`, `joblib`, `tensorflow`, `keras`
+- **Database**: PostgreSQL (with Neon support)
+- **ORM/Migrations**: SQLAlchemy, Alembic
+- **Security**: JWT (`python-jose`), `passlib` (`bcrypt`)
+- **Deployment**: Configured for Cloud Hosting (e.g., Vercel)
+
+## 📁 Project Structure
+
+```text
+├── app/
+│   ├── alembic/          # Database migrations
+│   ├── config/           # App configuration (DB, session)
+│   ├── models/           # SQLAlchemy models
+│   ├── routes/           # API endpoints (Auth, User, ML)
+│   ├── schemas/          # Pydantic schemas
+│   ├── utils/            # Helper functions (JWT, Hashing, ML Preprocessing)
+│   └── main.py           # Application entry point
+├── model/
+│   ├── dataset/          # Raw datasets (excluded from Git)
+│   └── trained_models/   # Serialized ML models (excluded from Git)
+├── .env.example          # Template for environment variables
+├── requirements.txt      # Project dependencies
+└── vercel.json           # Deployment configuration
+```
+
+## ⚙️ Getting Started
+
+### 1. Prerequisites
+- Python 3.9+ installed
+- PostgreSQL database (or Neon/Supabase project)
+
+### 2. Installation
+```bash
+# Clone the repository
+git clone https://github.com/sikandermukhtar/text-classification.git
+cd text-classification
+
+# Create and activate virtual environment
+python -m venv venv
+# On Windows:
+venv\Scripts\activate
+# On Mac/Linux:
+source venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+### 3. Environment Setup
+1. Copy `.env.example` to `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+2. Fill in your database URL and a strong `SECRET_KEY`.
+3. *(Highly Recommended)*: Add `HF_TOKEN` to your `.env` to avoid rate limits and warnings when loading ML models. Get yours at [huggingface.co/settings/tokens](https://huggingface.co/settings/tokens).
+
+### 4. Database Migrations
+Apply the initial schema:
+```bash
+alembic upgrade head
+```
+
+### 5. Running the App
+```bash
+uvicorn app.main:app --reload
+```
+The API docs will be available at `http://127.0.0.1:8000/docs`.
+
+## 📡 API Endpoints
+
+### Authentication
+- `POST /auth/signup`: Create a new user account.
+- `POST /auth/login`: Authenticate and receive a JWT.
+
+### User
+- `GET /user/me`: Get current authenticated user profile.
+
+### Machine Learning
+- `POST /model/quora/classify`: Classify Quora questions.
+- `POST /model/imbd/classify`: Classify IMDB movie reviews.

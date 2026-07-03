@@ -46,23 +46,41 @@ export default async function ProjectDetail({ params }: PageProps) {
           <div className="mb-8 flex flex-wrap gap-3">
             {project.projectUrl && (
               <a href={project.projectUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-10 items-center justify-center gap-2 rounded-md bg-black px-4 py-2 text-sm font-medium text-white transition-[scale,background-color] duration-150 ease-out hover:bg-gray-800 active:scale-[0.96] dark:bg-white dark:text-black dark:hover:bg-gray-200">
-                Live Demo
+                {project.projectUrlLabel || "Live Demo"}
                 <ExternalLink className="h-4 w-4" aria-hidden="true" />
               </a>
             )}
-            {project.githubUrl && (
-              <HoverBorderGradient
-                as="a"
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                containerClassName="rounded-full"
-                className="inline-flex min-h-10 items-center justify-center gap-2 px-4 py-2 text-sm font-medium"
-                duration={1.5}
-              >
-                <Github className="h-4 w-4" aria-hidden="true" />
-                <span>View Source</span>
-              </HoverBorderGradient>
+            {project.githubUrls && project.githubUrls.length > 0 ? (
+              project.githubUrls.map((git) => (
+                <HoverBorderGradient
+                  key={git.url}
+                  as="a"
+                  href={git.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  containerClassName="rounded-full"
+                  className="inline-flex min-h-10 items-center justify-center gap-2 px-4 py-2 text-sm font-medium"
+                  duration={1.5}
+                >
+                  <Github className="h-4 w-4" aria-hidden="true" />
+                  <span>{git.label}</span>
+                </HoverBorderGradient>
+              ))
+            ) : (
+              project.githubUrl && (
+                <HoverBorderGradient
+                  as="a"
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  containerClassName="rounded-full"
+                  className="inline-flex min-h-10 items-center justify-center gap-2 px-4 py-2 text-sm font-medium"
+                  duration={1.5}
+                >
+                  <Github className="h-4 w-4" aria-hidden="true" />
+                  <span>View Source</span>
+                </HoverBorderGradient>
+              )
             )}
           </div>
 

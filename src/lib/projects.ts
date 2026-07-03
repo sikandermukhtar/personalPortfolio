@@ -17,7 +17,9 @@ export interface Project {
   content?: MDXRemoteSerializeResult
   layout: ContentLayout
   projectUrl?: string
+  projectUrlLabel?: string
   githubUrl?: string
+  githubUrls?: { label: string; url: string }[]
   technologies: string[]
   imageUrl?: string
   features?: string[]
@@ -38,7 +40,9 @@ function mergeProjectMetadata(
     slug: frontmatter.slug ?? canonicalSlug,
     description: frontmatter.description ?? '',
     projectUrl: frontmatter.projectUrl,
+    projectUrlLabel: frontmatter.projectUrlLabel,
     githubUrl: frontmatter.githubUrl,
+    githubUrls: frontmatter.githubUrls,
     technologies: frontmatter.technologies ?? [],
     imageUrl: frontmatter.imageUrl,
     features: frontmatter.features,
