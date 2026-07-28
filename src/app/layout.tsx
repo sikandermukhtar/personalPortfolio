@@ -5,6 +5,7 @@ import { AutoScroll } from '@/components/AutoScroll'
 import { Navbar } from '@/components/Navbar'
 import { SmoothScroll } from '@/components/SmoothScroll'
 import { ThemeProvider } from 'next-themes'
+import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
 const dmSans = DM_Sans({
@@ -51,6 +52,7 @@ export default function RootLayout({
             </div>
           </div>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )
