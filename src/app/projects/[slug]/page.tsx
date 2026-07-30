@@ -121,7 +121,7 @@ export default async function ProjectDetail({ params }: PageProps) {
                   width={1200}
                   height={800}
                   unoptimized
-                  className="mt-5 h-auto w-full rounded-md bg-gray-100 object-contain outline outline-1 -outline-offset-1 outline-black/10 dark:bg-gray-900 dark:outline-white/10"
+                  className="mt-5 h-auto w-full rounded-md bg-white object-contain outline outline-1 -outline-offset-1 outline-black/10 dark:outline-white/10"
                 />
               )}
             </section>
