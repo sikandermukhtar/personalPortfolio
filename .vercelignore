@@ -1,0 +1,11 @@
+# Ignore files from being uploaded to Vercel during CLI deployments
+.git
+node_modules
+.next
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Keep src/data/quotes.ts (which is in .gitignore) so it gets uploaded
+!src/data/quotes.ts

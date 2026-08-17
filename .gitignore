@@ -44,3 +44,7 @@ coolFeatures.md
 .gitignore
 docs/sanity.md
 sanity.config.ts
+src/data/quotes.ts
+
+.vercel
+.env*
